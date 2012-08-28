@@ -18,6 +18,7 @@ module Oink
 
       log_routing(env)
       log_memory
+      log_symbols
       log_activerecord
       log_completed
       [status, headers, body]
@@ -25,6 +26,10 @@ module Oink
 
     def log_completed
       @logger.info("Oink Log Entry Complete")
+    end
+
+    def log_symbols
+      @logger.info("Oink Symbol Count: #{Symbol.all_symbols.size}")
     end
 
     def log_routing(env)
